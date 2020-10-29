@@ -7,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  siteName = 'Basketball Stats Site V.1';
-  pages = ["Homepage", "Players", "Teams"];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
