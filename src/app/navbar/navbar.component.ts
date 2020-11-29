@@ -13,23 +13,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NavbarComponent implements OnInit {
 
-  /*nbaData;
-  constructor(http: HttpClient){
-    const path = 'https://www.balldontlie.io/api/v1/players';
-    this.nbaData = http.get<any>(path)
-      .pipe(
-        map(obj => obj.data)
-      )
-  }
-  */
-
-  url = 'https://www.balldontlie.io/api/v1/players';
+  url = 'https://www.balldontlie.io/api/v1/players?per_page=5';
   names = [];
   names2: Array<string> = [];
-  
+  teamNames = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons", "Golden State Warriors", "Houston Rockets", "Indiana Pacers", "LA Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards"];
 
   constructor(private http: HttpClient){
-    this.http.get(this.url).toPromise().then(data =>{
+    /*this.http.get(this.url).toPromise().then(data =>{
       console.log(data);
 
         for(let key in data)
@@ -46,13 +36,16 @@ export class NavbarComponent implements OnInit {
 
         console.log(this.names2);
 
-    });
+    });*/
+
+    var starterFields = ["Lebron James", "James Harden", "Kyle Lowry", "Kawhi Leonard", "Anthony Davis", "Los Angeles Lakers", "Miami Heat", "Toronto Raptors", "Milwaukee Bucks"];
+    this.names2 = starterFields;
   }
   
   
 
   myControl = new FormControl();
-  options = this.names2/*['One', 'Two', 'Three']*/;
+  options = this.names2;
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
@@ -64,9 +57,34 @@ export class NavbarComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    this.getFilteredHttpData(filterValue);
+    //Check team names
+    var tempTeamName = this.teamNames;
+    tempTeamName = tempTeamName.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.names2.concat(tempTeamName);
   }
 
+  getFilteredHttpData(value: string){
+    var tempNames= [];
+    var tempNames2= [];
+    
+    this.http.get(this.url + "&search=" +value).toPromise().then(data =>{
+      console.log(data);
+
+        for(let key in data)
+          if (data.hasOwnProperty(key))
+          tempNames.push(data[key]);
+
+        tempNames = tempNames[0];
+
+        console.log(tempNames);
+
+        for(let key in tempNames)
+          if (tempNames.hasOwnProperty(key))
+          tempNames2.push(tempNames[key].first_name + " " + tempNames[key].last_name);
+
+        console.log(tempNames2);
+        this.names2 = tempNames2;
+  });}
 
 }
