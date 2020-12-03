@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-body',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
-  ngOnInit(): void {
+  tab:Array<boolean>;
+
+  ngOnInit() {
+    this.data.currentTab.subscribe(tab => this.tab = tab);
   }
+
+  
 
 }

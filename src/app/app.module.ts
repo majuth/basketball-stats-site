@@ -21,6 +21,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { PlayerComponent } from './player/player.component';
 import { TeamComponent } from './team/team.component';
 import { AboutComponent } from './about/about.component';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { AboutComponent } from './about/about.component';
     MatInputModule,
     HttpClientModule
   ],
-  providers: [
+  providers: [DataService
   ],
   bootstrap: [AppComponent]
 })

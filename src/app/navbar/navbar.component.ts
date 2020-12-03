@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { DataService } from '../data.service';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
   names2: Array<string> = [];
   teamNames = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons", "Golden State Warriors", "Houston Rockets", "Indiana Pacers", "LA Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks", "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards"];
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private data: DataService){
     /*this.http.get(this.url).toPromise().then(data =>{
       console.log(data);
 
@@ -51,11 +52,15 @@ export class NavbarComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   selectedOption = "";
 
+  tab:Array<boolean>;
+
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
+
+    this.data.currentTab.subscribe(tab => this.tab = tab);
   }
 
   private _filter(value: string): string[] {
@@ -92,6 +97,27 @@ export class NavbarComponent implements OnInit {
 
   submitForm(){
     this.selectedOption = this.myControl.value;
+    if(this.teamNames.includes(this.selectedOption)){
+      this.changeToTeam();
+    }else{
+      this.changeToPlayer();
+    }
+  }
+
+  changeToAbout(){
+    this.data.changeTab([true,true,true,false]);
+  }
+
+  changeToHomepage(){
+    this.data.changeTab([false,true,true,true]);
+  }
+
+  changeToPlayer(){
+    this.data.changeTab([true,false,true,true]);
+  }
+
+  changeToTeam(){
+    this.data.changeTab([true,true,false,true]);
   }
 
 }
