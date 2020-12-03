@@ -120,4 +120,9 @@ export class NavbarComponent implements OnInit {
     this.data.changeTab([true,true,false,true]);
   }
 
+  submitSearch(search: String){
+    this.myControl.patchValue(search);
+    this.submitForm();
+  }
+
 }
