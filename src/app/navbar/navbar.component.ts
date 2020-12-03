@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -43,10 +43,13 @@ export class NavbarComponent implements OnInit {
   }
   
   
+  @Output() optionActivated: EventEmitter<void> = new EventEmitter();
+  @Output() optionSelected: EventEmitter<void> = new EventEmitter();
 
   myControl = new FormControl();
   options = this.names2;
   filteredOptions: Observable<string[]>;
+  selectedOption = "";
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -86,5 +89,9 @@ export class NavbarComponent implements OnInit {
         console.log(tempNames2);
         this.names2 = tempNames2;
   });}
+
+  submitForm(){
+    this.selectedOption = this.myControl.value;
+  }
 
 }

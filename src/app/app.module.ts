@@ -16,11 +16,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BodyComponent } from './body/body.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { PlayerComponent } from './player/player.component';
+import { TeamComponent } from './team/team.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    BodyComponent,
+    HomepageComponent,
+    PlayerComponent,
+    TeamComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
