@@ -77,7 +77,7 @@ export class NavbarComponent implements OnInit {
     var tempNames2= [];
     
     this.http.get(this.url + "&search=" +value).toPromise().then(data =>{
-      console.log(data);
+      //console.log(data);
 
         for(let key in data)
           if (data.hasOwnProperty(key))
@@ -85,21 +85,24 @@ export class NavbarComponent implements OnInit {
 
         tempNames = tempNames[0];
 
-        console.log(tempNames);
+        //console.log(tempNames);
 
         for(let key in tempNames)
           if (tempNames.hasOwnProperty(key))
           tempNames2.push(tempNames[key].first_name + " " + tempNames[key].last_name);
 
-        console.log(tempNames2);
+        //console.log(tempNames2);
         this.names2 = tempNames2;
   });}
 
   submitForm(){
     this.selectedOption = this.myControl.value;
     if(this.teamNames.includes(this.selectedOption)){
+      var teamID = this.teamNames.indexOf(this.selectedOption) + 1;
+      this.changeTeam(teamID)
       this.changeToTeam();
     }else{
+      this.getPlayerID(this.selectedOption);
       this.changeToPlayer();
     }
   }
@@ -123,6 +126,36 @@ export class NavbarComponent implements OnInit {
   submitSearch(search: String){
     this.myControl.patchValue(search);
     this.submitForm();
+  }
+
+  changeTeam(team: number){
+    this.data.changeTeam(team);
+  }
+
+  changePlayer(player: number){
+    this.data.changePlayer(player);
+  }
+
+  getPlayerID(search: String){
+    var id: number;
+    var firstData =[];
+    var secondData = [];
+    this.http.get(this.url + "&search=" +search).toPromise().then(data =>{
+      
+        for(let key in data)
+          if (data.hasOwnProperty(key))
+          firstData.push(data[key]);
+
+        firstData= firstData[0];
+
+        for(let key in firstData)
+          if (firstData.hasOwnProperty(key))
+          secondData.push(firstData[key]);
+
+        
+        id = secondData[0].id;
+        this.changePlayer(id);
+  });
   }
 
 }

@@ -10,7 +10,21 @@ export class DataService{
 
     constructor(){}
 
+    public teamID = new BehaviorSubject<number>(1);
+    currentTeam = this.teamID.asObservable();
+
+    public playerID = new BehaviorSubject<number>(0);
+    currentPlayer = this.playerID.asObservable();
+
     changeTab(tab: Array<boolean>){
     this.activeTab.next(tab);
+    }
+
+    changeTeam(team: number){
+    this.teamID.next(team);
+    }
+
+    changePlayer(player: number){
+    this.playerID.next(player);
     }
 }
