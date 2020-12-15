@@ -16,6 +16,7 @@ export class TeamComponent implements OnInit {
   teamID:number;
   teamData: Array<string>;
   teamGames: Array<game>;
+  currentSeason: number;
 
   ngOnInit() {
     this.data.currentTeam.subscribe((team) => {this.teamID = team; this.loadTeamData()});
@@ -37,6 +38,7 @@ export class TeamComponent implements OnInit {
   });
 
   this.loadTeamGames();
+  this.loadTeamStats();
   }
   
   loadTeamGames(){
@@ -47,12 +49,14 @@ export class TeamComponent implements OnInit {
     var dateString = startDate.getFullYear() + "-" + startDate.getMonth() + "-" + startDate.getDate();
     this.getGameData(dateString).subscribe( res => this.teamGames = res.data.sort((a,b) => b.date.localeCompare(a.date)));
     console.log(this.teamGames);
-
   }
 
   getGameData(dateString: string): Observable<gameData>{
     return this.http.get<gameData>("https://www.balldontlie.io/api/v1/games?team_ids[]=" + this.teamID + "&start_date=%27"+ dateString +"%27&per_page=100");
   }
 
+  loadTeamStats(){
+    
+  }
 
 }
