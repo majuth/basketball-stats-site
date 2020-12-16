@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
-import { game, gameData, rawSportsData } from '../interfaces';
+import { game, gameData, nbaTeam, rawSportsData, rawTeamAvgData } from '../interfaces';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,6 +17,8 @@ export class TeamComponent implements OnInit {
   teamData: Array<string>;
   teamGames: Array<game>;
   currentSeason;
+  teamAvg: Array<nbaTeam>;
+  nbaTeamID = [0, 1, 14, 29, 4, 2, 5, 6, 28, 7, 8, 17, 9, 10, 26, 11, 12, 13, 3, 15, 23, 16, 18, 19, 20, 21, 22, 24, 25, 27];
 
   ngOnInit() {
     this.data.currentTeam.subscribe((team) => {this.teamID = team; this.loadTeamData()});
@@ -59,9 +61,11 @@ export class TeamComponent implements OnInit {
 
   loadTeamStats(){
     this.http.get<rawSportsData>("http://data.nba.net/json/cms/today.json").subscribe( res => (this.currentSeason = res.sports_content.sports_meta.season_meta.season_year));
-    
+    console.log(this.currentSeason);
+
     //add interface to get team stats and store it
-    //this.http.get<______>("https://data.nba.net/data/10s/prod/v1/" +this.currentSeason +"/team_stats_rankings.json").subscribe( res => (this._____ = res._______));
+    this.http.get<rawTeamAvgData>("https://data.nba.net/data/10s/prod/v1/" +this.currentSeason +"/team_stats_rankings.json").subscribe( res => (this.teamAvg = res.league.standard.regularSeason.teams));
+    console.log(this.teamAvg);
   }
 
 }

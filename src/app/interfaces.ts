@@ -44,7 +44,13 @@ export interface sports_content{
     sports_meta : sports_meta;
 }
 
-export interface sports_meta{date_time:string, end_to_end_time_millis: string, consolidatedDomKey: string, season_meta:season_meta, next: {url:string}}
+export interface sports_meta{
+    date_time:string,
+    end_to_end_time_millis: string, 
+    consolidatedDomKey: string, 
+    season_meta:season_meta, 
+    next: {url:string}
+}
 
 export interface season_meta{
     calendar_date: string,
@@ -60,4 +66,65 @@ export interface season_meta{
     display_season: string,
     season_stage: string,
     league_id: string
+}
+
+export interface rawTeamAvgData{
+    _internal: internal,
+    league: league
+}
+
+export interface internal{
+    pubDateTime	:	Date,
+    igorPath	:	string,
+    xslt	:	string,
+    xsltForceRecompile	:	boolean,
+    xsltInCache	:	boolean,
+    xsltCompileTimeMillis	:	number,
+    xsltTransformTimeMillis	:	number,
+    consolidatedDomKey	:	string,
+    endToEndTimeMillis	:	number
+}
+
+export interface league{
+    standard : season,
+	africa : season,
+	sacramento : season,
+	vegas : season,
+	utah: season
+}
+
+export interface season{
+    seasonYear : string,
+    preseason : string,
+    regularSeason: {teams: nbaTeam[]},
+    playoffs : string
+}
+
+export interface nbaTeam{
+    teamId	:	number,
+    name	:	string,
+    nickname	:	string,
+    teamcode	:	string,
+    abbreviation	:	string,
+    min : avgRank,
+	fgp : avgRank,
+	tpp : avgRank,
+	ftp : avgRank,
+	orpg : avgRank,
+	drpg : avgRank,
+	trpg : avgRank,
+	apg : avgRank,
+	tpg : avgRank,
+	spg : avgRank,
+	bpg : avgRank,
+	pfpg : avgRank,
+	ppg : avgRank,
+	oppg : avgRank,
+	eff : avgRank
+
+}
+
+export interface avgRank{
+    avg	: number,
+    rank : number
 }
