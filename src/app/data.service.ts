@@ -13,7 +13,7 @@ export class DataService{
     public teamID = new BehaviorSubject<number>(1);
     currentTeam = this.teamID.asObservable();
 
-    public playerID = new BehaviorSubject<number>(0);
+    public playerID = new BehaviorSubject<number>(286);
     currentPlayer = this.playerID.asObservable();
 
     changeTab(tab: Array<boolean>){

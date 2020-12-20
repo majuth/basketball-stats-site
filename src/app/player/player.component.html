@@ -1,4 +1,47 @@
 <p>{{playerID}}</p>
 <div *ngFor="let item of playerData">
     {{item}}
-<div>
+</div>
+
+    <div class="container contentBox">
+        <div class="row">
+          <div class="col-3">
+              player pic
+            <!--<img alt="{{teamData[5]}} logo" src="../../assets/teamLogos/{{teamID}}.svg">-->
+          </div>
+          <div class="col-9">
+            {{playerData[1] + " " + playerData[4]}}
+            <br>
+            {{playerData[2] + "\' " + playerData[3] + "\"\t\t" + playerData[5]}}
+            <br>
+            {{playerData[7] + " lbs"}}
+          </div>
+        </div>
+        <div class="row" style="border-top: solid;">
+          <div class="col-md-3 col-sm-6 col-6">
+            PPG 
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            RPG 
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            APG 
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            SPG 
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            FG% 
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            3P% 
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            FT% 
+          </div>
+          <div class="col-md-3 col-sm-6 col-6">
+            EFF 
+          </div>
+          
+        </div>
+      </div>
