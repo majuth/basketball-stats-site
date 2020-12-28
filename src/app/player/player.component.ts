@@ -13,9 +13,11 @@ export class PlayerComponent implements OnInit {
 
   playerID: number;
   playerData: Array<string>;
+  currentSeason;
 
   ngOnInit(){
     this.data.currentPlayer.subscribe((player) => {this.playerID = player; this.loadPlayerData()});
+    this.data.currentSeason.subscribe((season) => {this.currentSeason = season});
   }
 
   loadPlayerData(){

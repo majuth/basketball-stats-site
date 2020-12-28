@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
-import { game, gameData, nbaTeam, rawSportsData, rawTeamAvgData } from '../interfaces';
+import { game, gameData, nbaTeam, rawTeamAvgData, todayData } from '../interfaces';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,6 +22,7 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
     this.data.currentTeam.subscribe((team) => {this.teamID = team; this.loadTeamData()});
+    this.data.currentSeason.subscribe((season) => {this.currentSeason = season});
   }
 
   loadTeamData(){
@@ -45,22 +46,26 @@ export class TeamComponent implements OnInit {
   
   loadTeamGames(){
     var startDate = new Date();
+    var endDate = new Date();
 
     startDate.setMonth(startDate.getMonth() - 10);
+    endDate.setTime( endDate.getTime() + 10 * 86400000 );
+
     
-    var dateString = startDate.getFullYear() + "-" + startDate.getMonth() + "-" + startDate.getDate();
-    this.getGameData(dateString).subscribe( res => this.teamGames = res.data.sort((a,b) => b.date.localeCompare(a.date)));
+    var startdateString = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();
+    var enddateString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+    this.getGameData(startdateString, enddateString).subscribe( res => this.teamGames = res.data.sort((a,b) => b.date.localeCompare(a.date)));
     //console.log(this.teamGames);
   }
 
-  getGameData(dateString: string): Observable<gameData>{
-    return this.http.get<gameData>("https://www.balldontlie.io/api/v1/games?team_ids[]=" + this.teamID + "&start_date=%27"+ dateString +"%27&per_page=100");
+  getGameData(startdateString: string, enddateString: string): Observable<gameData>{
+    return this.http.get<gameData>("https://www.balldontlie.io/api/v1/games?team_ids[]=" + this.teamID + "&start_date=%27"+ startdateString + "&end_date=%27"+ enddateString +"%27&per_page=100");
   }
 
   
 
   loadTeamStats(){
-    this.http.get<rawSportsData>("http://data.nba.net/json/cms/today.json").subscribe( res => (this.currentSeason = res.sports_content.sports_meta.season_meta.season_year));
+    this.http.get<todayData>("http://data.nba.net/prod/v3/today.json").subscribe( res => (this.data.changeSeason(res.seasonScheduleYear)));
     console.log(this.currentSeason);
 
     //add interface to get team stats and store it

@@ -36,6 +36,7 @@ export interface gameData {
     meta: {details}
 }
 
+/*
 export interface rawSportsData{
     sports_content: sports_content;
 }
@@ -67,6 +68,20 @@ export interface season_meta{
     season_stage: string,
     league_id: string
 }
+
+*/
+
+//new seasonYear data
+
+export interface todayData{
+    _internal :string,
+	teamSitesOnly :string,
+    seasonScheduleYear: number,
+    showPlayoffsClinch :boolean,
+	links :string
+}
+//new seasonYear data
+
 
 export interface rawTeamAvgData{
     _internal: internal,

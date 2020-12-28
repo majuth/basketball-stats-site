@@ -51,14 +51,14 @@
         <tr>
           <th>Date</th>
           <th colspan="3">Score</th>
-          <th>Status</th>
+          <th>Time</th>
         </tr>
         <tr *ngFor="let game of teamGames">
           <td>{{game.date| date: 'EEE MM-dd-yyyy'}}</td>
           <td>HOME</td>
           <td><img alt="{{teamData[5]}} logo" style="height: 30px" src="../../assets/teamLogos/{{game.home_team.id}}.svg">{{game.home_team.abbreviation + " " + game.home_team_score + " - " + game.visitor_team_score + " " + game.visitor_team.abbreviation}}<img alt="{{teamData[5]}} logo" style="height: 30px" src="../../assets/teamLogos/{{game.visitor_team.id}}.svg"></td>
           <td> AWAY</td>
-          <td> {{!!(game.status == 'Final')  ? game.status : game.period + " |" + game.time}} </td>
+          <td> {{!!(game.status == 'Final' || game.period != 4)  ? game.status : game.period + " |" + game.time}} </td>
         </tr>
       </table>
     </div>
