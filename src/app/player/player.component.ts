@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
+import { playerCurrentSeasonStats } from '../interfaces';
 
 @Component({
   selector: 'app-player',
@@ -14,6 +15,7 @@ export class PlayerComponent implements OnInit {
   playerID: number;
   playerData: Array<string>;
   currentSeason;
+  playerCurrentSeasonStats;
 
   ngOnInit(){
     this.data.currentPlayer.subscribe((player) => {this.playerID = player; this.loadPlayerData()});
@@ -33,7 +35,12 @@ export class PlayerComponent implements OnInit {
         console.log(playerData);
 
         this.playerData = playerData;
+
+    this.getSeasonStats();
   });}
 
-  
+  getSeasonStats(){
+    this.http.get<playerCurrentSeasonStats>("https://www.balldontlie.io/api/v1/season_averages?season=" + this.currentSeason +"&player_ids[]=" + this.playerID).subscribe( res => (this.playerCurrentSeasonStats = res.data[0]));
+    console.log(this.playerCurrentSeasonStats);
+  }
 }
