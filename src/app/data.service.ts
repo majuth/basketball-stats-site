@@ -34,4 +34,5 @@ export class DataService{
     changeSeason(season: number){
     this.season.next(season);
     }
+
 }

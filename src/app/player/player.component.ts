@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
+import { PlayerpicService } from '../playerpic.service';
 import { HttpClient } from '@angular/common/http';
-import { playerCurrentSeasonStats } from '../interfaces';
+import { playerCurrentSeasonStats, playerData, rawPlayerIDData } from '../interfaces';
 
 @Component({
   selector: 'app-player',
@@ -10,12 +11,13 @@ import { playerCurrentSeasonStats } from '../interfaces';
 })
 export class PlayerComponent implements OnInit {
 
-  constructor(private data: DataService, private http: HttpClient) { }
+  constructor(private data: DataService, private http: HttpClient, private playerpic: PlayerpicService) { }
 
   playerID: number;
   playerData: Array<string>;
   currentSeason;
   playerCurrentSeasonStats;
+  playerIDData: playerData[];
 
   ngOnInit(){
     this.data.currentPlayer.subscribe((player) => {this.playerID = player; this.loadPlayerData()});
@@ -37,6 +39,7 @@ export class PlayerComponent implements OnInit {
         this.playerData = playerData;
 
     this.getSeasonStats();
+    this.getPlayerPic();
   });}
 
   getSeasonStats(){
@@ -45,7 +48,8 @@ export class PlayerComponent implements OnInit {
   }
 
   getPlayerPic(){
-    
+    this.playerIDData = this.playerpic.playerData;
+    console.log(this.playerIDData);
   }
   
 }

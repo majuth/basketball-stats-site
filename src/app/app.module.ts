@@ -22,6 +22,7 @@ import { PlayerComponent } from './player/player.component';
 import { TeamComponent } from './team/team.component';
 import { AboutComponent } from './about/about.component';
 import { DataService } from './data.service';
+import { PlayerpicService } from './playerpic.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { DataService } from './data.service';
     MatInputModule,
     HttpClientModule
   ],
-  providers: [DataService
+  providers: [DataService, PlayerpicService
   ],
   bootstrap: [AppComponent]
 })

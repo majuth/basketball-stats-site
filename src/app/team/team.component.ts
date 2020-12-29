@@ -66,11 +66,11 @@ export class TeamComponent implements OnInit {
 
   loadTeamStats(){
     this.http.get<todayData>("http://data.nba.net/prod/v3/today.json").subscribe( res => (this.data.changeSeason(res.seasonScheduleYear)));
-    console.log(this.currentSeason);
+    //console.log(this.currentSeason);
 
     //add interface to get team stats and store it
     this.http.get<rawTeamAvgData>("https://data.nba.net/data/10s/prod/v1/" +this.currentSeason +"/team_stats_rankings.json").subscribe( res => (this.teamAvg = res.league.standard.regularSeason.teams));
-    console.log(this.teamAvg);
+    //console.log(this.teamAvg);
   }
 
 }

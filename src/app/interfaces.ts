@@ -205,12 +205,15 @@ export interface playerData{
     weightPounds: number,
     weightKilograms: number,
     dateOfBirthUTC: number,
-    teamSitesOnly: {4},
-    teams:[],
-    draft:{teamId: number,
-        pickNum: number,
-        roundNum: number,
-        seasonYear: number
+    teamSitesOnly: {playerCode: string,
+        posFull: string,
+        displayAffiliation: string,
+        freeAgentCode: string},
+    teams:number[],
+    draft:{teamId: string,
+        pickNum: string,
+        roundNum: string,
+        seasonYear: string
         },
     nbaDebutYear: number,
     yearsPro: number,
@@ -218,4 +221,3 @@ export interface playerData{
     lastAffiliation: string,
     country: string
 }
-
