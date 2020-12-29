@@ -44,5 +44,8 @@ export class PlayerComponent implements OnInit {
     console.log(this.playerCurrentSeasonStats);
   }
 
+  getPlayerPic(){
+    
+  }
   
 }

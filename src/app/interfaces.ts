@@ -176,3 +176,46 @@ export interface playerSeasonStats{
     fg3_pct :number,
     ft_pct :number,
 }
+
+export interface rawPlayerIDData{
+    _internal: internal,
+    league: league2
+}
+
+export interface league2{
+    standard : playerData[],
+	africa : playerData[],
+	sacramento : playerData[],
+	vegas : playerData[],
+	utah: playerData[]
+}
+
+export interface playerData{
+    firstName: string,
+    lastName: string,
+    temporaryDisplayName: string,
+    personId: number,
+    teamId: number,
+    jersey: number,
+    isActive:boolean,
+    pos: string,
+    heightFeet: number,
+    heightInches: number,
+    heightMeters: number,
+    weightPounds: number,
+    weightKilograms: number,
+    dateOfBirthUTC: number,
+    teamSitesOnly: {4},
+    teams:[],
+    draft:{teamId: number,
+        pickNum: number,
+        roundNum: number,
+        seasonYear: number
+        },
+    nbaDebutYear: number,
+    yearsPro: number,
+    collegeName: string,
+    lastAffiliation: string,
+    country: string
+}
+
