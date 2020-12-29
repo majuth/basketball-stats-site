@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 import { PlayerpicService } from '../playerpic.service';
 import { HttpClient } from '@angular/common/http';
-import { playerCurrentSeasonStats, playerData, rawPlayerIDData } from '../interfaces';
+import { playerCurrentSeasonStats, playerIDData, rawPlayerIDData } from '../interfaces';
 
 @Component({
   selector: 'app-player',
@@ -17,7 +17,8 @@ export class PlayerComponent implements OnInit {
   playerData: Array<string>;
   currentSeason;
   playerCurrentSeasonStats;
-  playerIDData: playerData[];
+  playerIDData: playerIDData[];
+  playerPicData: playerIDData;
 
   ngOnInit(){
     this.data.currentPlayer.subscribe((player) => {this.playerID = player; this.loadPlayerData()});
@@ -49,7 +50,24 @@ export class PlayerComponent implements OnInit {
 
   getPlayerPic(){
     this.playerIDData = this.playerpic.playerData;
-    console.log(this.playerIDData);
+    console.log(this.playerpic.playerData);
+
+    var playerFound = this.playerIDData.filter(val => (val.firstName === this.playerData[1] && val.lastName === this.playerData[4]))[0];
+
+    console.log(playerFound)
+    this.playerPicData = playerFound;
+
+    /*
+    var temp = []
+    for (let player in this.playerIDData)
+      temp.push(JSON.parse(this.playerIDData[player]))
+    console.log(temp);
+
+    var name = this.playerData[4] + ", " + this.playerData[1];
+
+    var spot = temp.findIndex(element => (element.includes(name)));
+    console.log(spot);
+    */
   }
   
 }

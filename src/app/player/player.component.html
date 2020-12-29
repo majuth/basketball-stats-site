@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-3">
               player pic
-            <!--<img alt="{{teamData[5]}} logo" src="../../assets/teamLogos/{{teamID}}.svg">-->
+            <img alt="{{playerData[4]}} headshot" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/{{playerPicData.personId}}.png">
           </div>
           <div class="col-9">
             {{playerData[1] + " " + playerData[4]}}
@@ -46,5 +46,9 @@
       </div>
 
 <div>
-  {{playerIDData[0]}}
+  {{playerIDData[0].personId}}
+  {{playerIDData[0].firstName}}
+  {{playerIDData[0].lastName}}
+
+  <!-- {{playerIDData | filter : {'firstName': "Jaylen"} }}-->
 </div>

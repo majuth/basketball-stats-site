@@ -183,14 +183,14 @@ export interface rawPlayerIDData{
 }
 
 export interface league2{
-    standard : playerData[],
-	africa : playerData[],
-	sacramento : playerData[],
-	vegas : playerData[],
-	utah: playerData[]
+    standard : playerIDData[],
+	africa : playerIDData[],
+	sacramento : playerIDData[],
+	vegas : playerIDData[],
+	utah: playerIDData[]
 }
 
-export interface playerData{
+export interface playerIDData{
     firstName: string,
     lastName: string,
     temporaryDisplayName: string,
