@@ -43,4 +43,6 @@ export class PlayerComponent implements OnInit {
     this.http.get<playerCurrentSeasonStats>("https://www.balldontlie.io/api/v1/season_averages?season=" + this.currentSeason +"&player_ids[]=" + this.playerID).subscribe( res => (this.playerCurrentSeasonStats = res.data[0]));
     console.log(this.playerCurrentSeasonStats);
   }
+
+  
 }
