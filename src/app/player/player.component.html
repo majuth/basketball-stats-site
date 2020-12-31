@@ -5,50 +5,50 @@
     <div class="container contentBox">
         <div class="row">
           <div class="col-3">
-              player pic
-            <img alt="{{playerData[4]}} headshot" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/{{playerPicData.personId}}.png">
+            <img alt="{{playerData[4]}} headshot" src="{{!(playerPicData == null)  ? 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/' + playerPicData.personId + '.png' : '../assets/picUnavailable.jpg'}}" class="headshot">
           </div>
           <div class="col-9">
             {{playerData[1] + " " + playerData[4]}}
             <br>
-            {{playerData[2] + "\' " + playerData[3] + "\"\t\t" + playerData[5]}}
+            {{!(playerData[2] == null)  ? playerData[2] + "\' " + playerData[3] + "\"\t\t" : ""}} {{!(playerData[5] == null)  ? playerData[5] : ""}}
             <br>
-            {{playerData[7] + " lbs"}}
+            {{!(playerData[7] == null)  ? playerData[7] + " lbs" : ""}}
           </div>
         </div>
         <div class="row" style="border-top: solid;">
           <div class="col-md-3 col-sm-6 col-6">
-            PPG {{playerCurrentSeasonStats.pts}}
+            PPG {{!(playerPicData == null)  ? playerCurrentSeasonStats.pts : 'N/A'}}
           </div>
           <div class="col-md-3 col-sm-6 col-6">
-            RPG {{playerCurrentSeasonStats.reb}}
+            RPG {{!(playerPicData == null)  ? playerCurrentSeasonStats.reb : 'N/A'}}
           </div>
           <div class="col-md-3 col-sm-6 col-6">
-            APG {{playerCurrentSeasonStats.ast}}
+            APG {{!(playerPicData == null)  ? playerCurrentSeasonStats.ast : 'N/A'}}
           </div>
           <div class="col-md-3 col-sm-6 col-6">
-            SPG {{playerCurrentSeasonStats.stl}}
+            SPG {{!(playerPicData == null)  ? playerCurrentSeasonStats.stl : 'N/A'}}
           </div>
           <div class="col-md-3 col-sm-6 col-6">
-            BPG {{playerCurrentSeasonStats.blk}}
+            BPG {{!(playerPicData == null)  ? playerCurrentSeasonStats.blk : 'N/A'}}
           </div>
           <div class="col-md-3 col-sm-6 col-6">
-            FG% {{playerCurrentSeasonStats.fg_pct}}
+            FG% {{!(playerPicData == null)  ? playerCurrentSeasonStats.fg_pct : 'N/A'}}
           </div>
           <div class="col-md-3 col-sm-6 col-6">
-            3P% {{playerCurrentSeasonStats.fg3_pct}}
+            3P% {{!(playerPicData == null)  ? playerCurrentSeasonStats.fg3_pct : 'N/A'}}
           </div>
           <div class="col-md-3 col-sm-6 col-6">
-            FT% {{playerCurrentSeasonStats.ft_pct}}
+            FT% {{!(playerPicData == null)  ? playerCurrentSeasonStats.ft_pct : 'N/A'}}
           </div>
           
         </div>
       </div>
 
 <div>
+  <!--
   {{playerIDData[0].personId}}
   {{playerIDData[0].firstName}}
   {{playerIDData[0].lastName}}
 
-  <!-- {{playerIDData | filter : {'firstName': "Jaylen"} }}-->
+   {{playerIDData | filter : {'firstName': "Jaylen"} }}-->
 </div>
