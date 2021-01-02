@@ -32,7 +32,7 @@ import { PlayerpicService } from './playerpic.service';
     HomepageComponent,
     PlayerComponent,
     TeamComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +48,6 @@ import { PlayerpicService } from './playerpic.service';
   ],
   providers: [DataService, PlayerpicService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

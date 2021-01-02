@@ -1,3 +1,14 @@
+export interface player{
+    id : number,
+    first_name : string,
+    height_feet : number,
+    height_inches : number,
+    last_name : string,
+    position : string,
+    team_id : number,
+    weight_pounds : number,
+}
+
 export interface game {
     id: number,
     date: string,
@@ -220,4 +231,36 @@ export interface playerIDData{
     collegeName: string,
     lastAffiliation: string,
     country: string
+}
+
+export interface playerGameStats{
+    data: gameStats[],
+    meta: {details}
+}
+
+export interface gameStats{
+    id : number,
+    ast : number,
+    blk : number,
+    dreb : number,
+    fg3_pct : number,
+    fg3a : number,
+    fg3m : number,
+    fg_pct : number,
+    fga : number,
+    fgm : number,
+    ft_pct : number,
+    fta : number,
+    ftm : number,
+	game : game,
+    min : number,
+    oreb : number,
+    pf : number,
+    player: player,
+        
+    pts : number,
+    reb : number,
+    stl : number,
+    team : team,
+
 }
