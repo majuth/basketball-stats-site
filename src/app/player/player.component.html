@@ -44,6 +44,51 @@
         </div>
       </div>
 
+
+      <div>
+        Season Averages
+        <table>
+          <tr>
+            <th>Season</th>
+            <th>Games Played</th>
+            <th>Min</th>
+            <th>Pts</th>
+            <th>Reb  </th>
+            <th>Oreb</th>
+            <th>Dreb</th>
+            <th>Ast</th>
+            <th>Stl  </th>
+            <th>Blk</th>
+            <th>To</th>
+            <th>Pf</th>
+            <th>Fgm</th>
+            <th>Fga</th>
+            <th>Fg3m</th>
+            <th>Fg3a</th>
+            <th> Ftm</th>
+            <th>Fta</th>
+            <th>Fg pct</th>
+            <th>Fg3 pct</th>
+            <th>Ft pct</th>
+          </tr>
+          
+          <tr></tr>
+
+          <tr>
+            <td>{{playerOldSeasonStats[0].pts}}</td> 2019
+          </tr>
+          
+        </table>
+
+        <table *ngFor="let year of playerOldSeasonStats">
+          <tr>
+          <td>
+            {{year.pts}}
+          </td>
+          </tr>
+        </table>
+      </div>
+
 <div>
   <!--
   {{playerIDData[0].personId}}

@@ -19,6 +19,7 @@ export class PlayerComponent implements OnInit {
   playerCurrentSeasonStats;
   playerIDData: playerIDData[];
   playerPicData: playerIDData;
+  playerOldSeasonStats = [];
 
   ngOnInit(){
     this.data.currentPlayer.subscribe((player) => {this.playerID = player; this.loadPlayerData()});
@@ -41,6 +42,7 @@ export class PlayerComponent implements OnInit {
 
     this.getSeasonStats();
     this.getPlayerPic();
+    this.getPastSeasonStats();
   });}
 
   getSeasonStats(){
@@ -68,6 +70,14 @@ export class PlayerComponent implements OnInit {
     var spot = temp.findIndex(element => (element.includes(name)));
     console.log(spot);
     */
+  }
+
+  getPastSeasonStats(){
+    this.playerOldSeasonStats=[];
+    for(var i = 0; i < 2; i++){
+      this.http.get<playerCurrentSeasonStats>("https://www.balldontlie.io/api/v1/season_averages?season=" + (this.currentSeason - 1 - i) +"&player_ids[]=" + this.playerID).subscribe( res => (this.playerOldSeasonStats.push(res.data[0])));
+    }
+    console.log(this.playerOldSeasonStats);
   }
   
 }
