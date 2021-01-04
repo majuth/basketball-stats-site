@@ -1,6 +1,7 @@
-<div *ngFor="let item of playerData">
-    {{item}}
-</div>
+<div *ngIf="showContent">
+  <div *ngFor="let item of playerData">
+      {{item}}
+  </div>
 
     <div class="container contentBox">
         <div class="row">
@@ -13,6 +14,8 @@
             {{!(playerData[2] == null)  ? playerData[2] + "\' " + playerData[3] + "\"\t\t" : ""}} {{!(playerData[5] == null)  ? playerData[5] : ""}}
             <br>
             {{!(playerData[7] == null)  ? playerData[7] + " lbs" : ""}}
+            <br>
+            <img alt="player's team logo" style="height: 30px" src="../../assets/teamLogos/{{playerTeamID}}.svg">
           </div>
         </div>
         <div class="row" style="border-top: solid;">
@@ -45,7 +48,7 @@
       </div>
 
       <div>
-        Past Games
+        <p>Past Games</p>
         <table>
           <tr>
             <th>Date</th>
@@ -101,7 +104,7 @@
 
 
       <div>
-        Season Averages (Past 2 only due to api performance)
+        <p>Season Averages (Past 2 only due to api performance)</p>
         <table>
           <tr>
             <th>Season</th>
@@ -155,6 +158,14 @@
         </table>
 
       </div>
+
+</div>
+
+<div *ngIf="!showContent">
+  <h3>Content unavailable for selected player</h3>
+  <br>
+  <h4>Due to data availability only current player stats avaialble.</h4>
+</div>
 
 <div>
   <!--

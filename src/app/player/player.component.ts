@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 import { PlayerpicService } from '../playerpic.service';
 import { HttpClient } from '@angular/common/http';
-import { gameStats, playerCurrentSeasonStats, playerGameStats, playerIDData, rawPlayerIDData } from '../interfaces';
+import { gameStats, playerCurrentSeasonStats, playerGameStats, playerIDData, rawPlayerIDData, team } from '../interfaces';
 import { Observable } from 'rxjs';
 import { pipe } from 'rxjs';
 
@@ -23,6 +23,8 @@ export class PlayerComponent implements OnInit {
   playerPicData: playerIDData;
   playerGameStats: gameStats[];
   playerOldSeasonStats = [];
+  showContent = true;
+  playerTeamID = 0;
 
   ngOnInit(){
     this.data.currentPlayer.subscribe((player) => {this.playerID = player; this.loadPlayerData()});
@@ -43,10 +45,13 @@ export class PlayerComponent implements OnInit {
 
         this.playerData = playerData;
 
-    this.getSeasonStats();
     this.getPlayerPic();
+    if(this.showContent == true){
+    this.getPlayerTeam();
+    this.getSeasonStats();
     this.loadPastGames();
     this.getPastSeasonStats();
+    }
   });}
 
   getSeasonStats(){
@@ -62,6 +67,11 @@ export class PlayerComponent implements OnInit {
 
     console.log(playerFound)
     this.playerPicData = playerFound;
+    if(playerFound == null){
+      this.showContent = false;
+    }else{
+      this.showContent = true;
+    }
 
     /*
     var temp = []
@@ -102,5 +112,9 @@ export class PlayerComponent implements OnInit {
     console.log(this.playerOldSeasonStats);
   }
   
-  
+  getPlayerTeam(){
+    var playerTeam: team = this.playerData[6] as unknown as team;
+    this.playerTeamID = playerTeam.id;
+    console.log(playerTeam);
+  }
 }
