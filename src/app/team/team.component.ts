@@ -19,10 +19,12 @@ export class TeamComponent implements OnInit {
   currentSeason;
   teamAvg: Array<nbaTeam>;
   nbaTeamID = [0, 1, 14, 29, 4, 2, 5, 6, 28, 7, 8, 17, 9, 10, 26, 11, 12, 13, 3, 15, 23, 16, 18, 19, 20, 21, 22, 24, 25, 27];
+  loading = false;
 
   ngOnInit() {
     this.data.currentTeam.subscribe((team) => {this.teamID = team; this.loadTeamData()});
     this.data.currentSeason.subscribe((season) => {this.currentSeason = season});
+    this.data.loading.subscribe((loading) => {this.loading = loading});
   }
 
   loadTeamData(){
@@ -42,6 +44,7 @@ export class TeamComponent implements OnInit {
 
   this.loadTeamGames();
   this.loadTeamStats();
+  this.data.changeLoading(false);
   }
   
   loadTeamGames(){
