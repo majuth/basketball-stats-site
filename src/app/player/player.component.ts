@@ -24,11 +24,13 @@ export class PlayerComponent implements OnInit {
   playerGameStats: gameStats[];
   playerOldSeasonStats = [];
   showContent = true;
+  loading = false;
   playerTeamID = 0;
 
   ngOnInit(){
     this.data.currentPlayer.subscribe((player) => {this.playerID = player; this.loadPlayerData()});
     this.data.currentSeason.subscribe((season) => {this.currentSeason = season});
+    this.data.loading.subscribe((loading) => {this.loading = loading});
   }
 
   loadPlayerData(){
@@ -52,6 +54,8 @@ export class PlayerComponent implements OnInit {
     this.loadPastGames();
     this.getPastSeasonStats();
     }
+
+    this.data.changeLoading(false);
   });}
 
   getSeasonStats(){

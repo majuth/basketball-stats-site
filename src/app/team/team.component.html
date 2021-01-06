@@ -3,7 +3,7 @@
 <div *ngFor="let item of teamData">
     {{item}}
 </div>
-<div>
+<div *ngIf="!loading">
     <div class="container contentBox">
         <div class="row">
           <div class="col-3">
@@ -63,3 +63,5 @@
       </table>
     </div>
 </div>
+
+<img *ngIf="loading" style="height: 100px" src="../../assets/loading.gif" alt="loading">

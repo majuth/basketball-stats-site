@@ -1,3 +1,4 @@
+<div *ngIf="!loading">
 <div *ngIf="showContent">
   <div *ngFor="let item of playerData">
       {{item}}
@@ -166,6 +167,9 @@
   <br>
   <h4>Due to data availability only current player stats avaialble.</h4>
 </div>
+
+</div>
+<img *ngIf="loading" style="height: 100px" src="../../assets/loading.gif" alt="loading">
 
 <div>
   <!--

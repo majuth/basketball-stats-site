@@ -19,6 +19,9 @@ export class DataService{
     public season = new BehaviorSubject<number>(2019);
     currentSeason = this.season.asObservable();
 
+    public loading = new BehaviorSubject<boolean>(false);
+    currentLoadingStatus = this.loading.asObservable();
+
     changeTab(tab: Array<boolean>){
     this.activeTab.next(tab);
     }
@@ -33,6 +36,10 @@ export class DataService{
 
     changeSeason(season: number){
     this.season.next(season);
+    }
+    
+    changeLoading(loading: boolean){
+    this.loading.next(loading);
     }
 
 }
