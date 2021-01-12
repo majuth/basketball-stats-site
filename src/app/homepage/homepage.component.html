@@ -1,61 +1,23 @@
-<h3 style="text-align: center;">Compare Players</h3>
+<br>
+<br>
+<h2><img style="vertical-align: middle;" src ="./assets/basketball.svg" > <span style="vertical-align: middle;">Basketball Stats Site</span></h2>
+<h3> Up to date NBA player and team statistics in an easy to use site.</h3>
+<br>
+<h4> Begin your search by searching for a Player or Team:</h4>
+<form class="searchbarForm">
+  <mat-form-field>
+    <input class="searchbarInput" type="text" name="search"
+          placeholder="Search"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="submitForm()">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
 
-<div class="container contentBox">
-    <div class="row">
-      <div class="col">
-        Player
-      </div>
-      <div class="col">
-        Player
-      </div>
-      <div class="col">
-        Player
-      </div>
-      <div class="col">
-        Player
-      </div>
-    </div>
-    <div class="row" style="border-top: solid;">
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 1
-      </div>
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 2
-      </div>
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 3
-      </div>
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 4
-      </div>
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 5
-      </div>
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 6
-      </div>
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 7
-      </div>
-      <div class="col-md-3 col-sm-6 col-6">
-        Stat 8
-      </div>
-      
-    </div>
-  </div>
 
-  <h3 style="text-align: center;"> Comparison Graph </h3>
-
-  <div class="container contentBox">
-      <div class="row">
-          <div class="col">
-                <p>Comparison Options Here: </p>
-          </div>
-      </div>
-      <div class="row" style="border-top: solid;">
-        <div class="col">
-                <!--<img style="max-width: 100%;" src="https://lh3.googleusercontent.com/proxy/RC4iEWSRYmo51e_PXEwENLTVNuMv6j1hkKTXGoMG9yxOqq6s5UDQ-sqKg08kCarJdaiI7ESDRQzN8jKU5weS-Su_qI2tieHAewDv" alt="graph placeholder">
-                -->
-        </div>
-      </div>
-  </div>
