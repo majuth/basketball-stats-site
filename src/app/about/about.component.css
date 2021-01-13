@@ -1,3 +1,7 @@
 .logoPics{
     height: 50px;
 }
+
+.logoContent{
+    display: inline-block;
+}
