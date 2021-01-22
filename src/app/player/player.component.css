@@ -10,3 +10,11 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.statsTable{
+    background-color: #374b54;
+}
+
+.statsTableHeader{
+    background-color: #435b66;
+}
