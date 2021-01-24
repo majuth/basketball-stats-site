@@ -8,7 +8,7 @@
 <div *ngIf="showContent">
     <br>
     <div class="container contentBox">
-        <div class="row">
+        <div class="row currentInfo">
           <div class="col-3">
             <img alt="{{playerData[4]}} headshot" src="{{!(playerPicData == null)  ? 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/' + playerPicData.personId + '.png' : '../assets/picUnavailable.jpg'}}" class="headshot">
           </div>
@@ -22,7 +22,7 @@
             <img alt="player's team logo" style="height: 30px" src="../../assets/teamLogos/{{playerTeamID}}.svg">
           </div>
         </div>
-        <div class="row" style="border-top: solid;">
+        <div class="row currentStats">
           <div class="col-md-3 col-sm-6 col-6">
             PPG {{!(playerPicData == null)  ? playerCurrentSeasonStats.pts : 'N/A'}}
           </div>

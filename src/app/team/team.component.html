@@ -8,7 +8,7 @@
 <div *ngIf="!loading">
     <br>
     <div class="container contentBox">
-        <div class="row">
+        <div class="row currentInfo">
           <div class="col-3">
             <img alt="{{teamData[5]}} logo" src="../../assets/teamLogos/{{teamID}}.svg">
           </div>
@@ -20,7 +20,7 @@
             {{teamData[4] + " Division"}}
           </div>
         </div>
-        <div class="row" style="border-top: solid;">
+        <div class="row currentStats">
           <div class="col-md-3 col-sm-6 col-6">
            {{teamAvg[nbaTeamID[teamID - 1]].name}} PPG {{teamAvg[nbaTeamID[teamID - 1]].ppg.avg}} | {{teamAvg[nbaTeamID[teamID - 1]].ppg.rank}}
           </div>
@@ -50,8 +50,8 @@
       </div>
 
     <div>
-      <table>
-        <tr>
+      <table class="statsTable">
+        <tr class="statsTableHeader">
           <th>Date</th>
           <th colspan="3">Score</th>
           <th>Time</th>
