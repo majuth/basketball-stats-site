@@ -1,0 +1,23 @@
+.mainTeamLogo{
+    height: 180px;
+}
+
+h2{
+    text-align: center;
+}
+
+.statsTable{
+    width: 600px;
+}
+
+@media only screen and (max-device-width: 450px) {
+    .statsTable{
+        width: 450px;
+    }
+}
+
+@media only screen and (min-device-width: 451px) and (max-device-width: 600px) {
+    .statsTable{
+        width: 100%;
+    }
+ }

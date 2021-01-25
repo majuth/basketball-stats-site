@@ -51,8 +51,8 @@ export class TeamComponent implements OnInit {
     var startDate = new Date();
     var endDate = new Date();
 
-    startDate.setMonth(startDate.getMonth() - 10);
-    endDate.setTime( endDate.getTime() + 10 * 86400000 );
+    startDate.setMonth(startDate.getMonth() - 5);
+    endDate.setTime( endDate.getTime() + 5 * 86400000 );
 
     
     var startdateString = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();

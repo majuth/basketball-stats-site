@@ -9,10 +9,10 @@
     <br>
     <div class="container contentBox">
         <div class="row currentInfo">
-          <div class="col-3">
+          <div class="col-md-3 col-sm-7 col-7">
             <img alt="{{playerData[4]}} headshot" src="{{!(playerPicData == null)  ? 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/' + playerPicData.personId + '.png' : '../assets/picUnavailable.jpg'}}" class="headshot">
           </div>
-          <div class="col-9">
+          <div class="col-md-9 col-sm-5 col-5">
             {{playerData[1] + " " + playerData[4]}}
             <br>
             {{!(playerData[2] == null)  ? playerData[2] + "\' " + playerData[3] + "\"\t\t" : ""}} {{!(playerData[5] == null)  ? playerData[5] : ""}}
@@ -51,8 +51,8 @@
         </div>
       </div>
 
-      <div>
-        <p>Past Games</p>
+      <h2>Past Games</h2>
+      <div class="statsTableWrapper">
         <table class="statsTable">
           <tr class="statsTableHeader">
             <th>Date</th>
@@ -107,8 +107,8 @@
       </div>
 
 
-      <div>
-        <p>Season Averages (Past 2 only due to api performance)</p>
+      <h2>Season Averages (Past 2 only)</h2>
+      <div class="statsTableWrapper">
         <table class="statsTable">
           <tr class="statsTableHeader">
             <th>Season</th>
