@@ -55,7 +55,7 @@
       <div class="statsTableWrapper">
         <table class="statsTable">
           <tr class="statsTableHeader">
-            <th>Date</th>
+            <th class="dateCol">Date</th>
             <th> Matchup </th>
             <th> Time </th>
             <th>Min</th>
@@ -76,10 +76,10 @@
             <th>Fta</th>
             <th>Fg pct</th>
             <th>Fg3 pct</th>
-            <th>Ft pct</th>
+            <th class="ftpctCol">Ft pct</th>
           </tr>
           <tr *ngFor="let stat of playerGameStats">
-            <td>{{stat.game.date| date: 'EEE MM-dd-yyyy'}}</td>
+            <td class="dateCol">{{stat.game.date| date: 'EEE MM-dd-yyyy'}}</td>
             <td><img alt="team1 logo" style="height: 30px" src="../../assets/teamLogos/{{stat.game.home_team_id}}.svg"> VS <img alt="team2 logo" style="height: 30px" src="../../assets/teamLogos/{{stat.game.visitor_team_id}}.svg"></td>
             
             <td> {{!!(stat.game.status == 'Final' || stat.game.period != 4)  ? stat.game.status : stat.game.period + " |" + stat.game.time}} </td>
@@ -101,7 +101,7 @@
             <td>{{stat.fta}}</td>
             <td>{{stat.fg_pct}}</td>
             <td>{{stat.fg3_pct}}</td>
-            <td>{{stat.ft_pct}}</td>
+            <td class="ftpctCol">{{stat.ft_pct}}</td>
           </tr>
         </table>
       </div>
@@ -111,7 +111,7 @@
       <div class="statsTableWrapper">
         <table class="statsTable">
           <tr class="statsTableHeader">
-            <th>Season</th>
+            <th class="dateCol">Season</th>
             <th>Games Played</th>
             <th>Min</th>
             <th>Pts</th>
@@ -131,12 +131,12 @@
             <th>Fta</th>
             <th>Fg pct</th>
             <th>Fg3 pct</th>
-            <th>Ft pct</th>
+            <th class="ftpctCol">Ft pct</th>
           </tr>
           
           
           <tr *ngFor="let year of playerOldSeasonStats">
-            <td>{{year.season}}</td>
+            <td class="dateCol">{{year.season}}</td>
             <td>{{year.games_played}}</td>
             <td>{{year.min}}</td>
             <td>{{year.pts}}</td>
@@ -156,7 +156,7 @@
             <td>{{year.fta}}</td>
             <td>{{year.fg_pct}}</td>
             <td>{{year.fg3_pct}}</td>
-            <td>{{year.ft_pct}}</td>
+            <td class="ftpctCol">{{year.ft_pct}}</td>
           </tr>
           
         </table>

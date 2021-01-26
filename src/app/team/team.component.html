@@ -53,16 +53,18 @@
     <div class="statsTableWrapper">
       <table class="statsTable">
         <tr class="statsTableHeader">
-          <th>Date</th>
-          <th colspan="3">Score</th>
-          <th>Time</th>
+          <th id="dateCol">Date</th>
+          <th id="homeCol"></th>
+          <th style="text-align: center;">Score</th>
+          <th id="awayCol"></th>
+          <th id="timeCol">Time</th>
         </tr>
         <tr *ngFor="let game of teamGames">
-          <td>{{game.date| date: 'EEE MM-dd-yyyy'}}</td>
-          <td>HOME</td>
-          <td><img alt="{{teamData[5]}} logo" style="height: 30px" src="../../assets/teamLogos/{{game.home_team.id}}.svg">{{game.home_team.abbreviation + " " + game.home_team_score + " - " + game.visitor_team_score + " " + game.visitor_team.abbreviation}}<img alt="{{teamData[5]}} logo" style="height: 30px" src="../../assets/teamLogos/{{game.visitor_team.id}}.svg"></td>
-          <td> AWAY</td>
-          <td> {{!!(game.status == 'Final' || game.period != 4)  ? game.status : game.period + " |" + game.time}}</td>
+          <td id="dateCol">{{game.date| date: 'EEE MM-dd-yyyy'}}</td>
+          <td id="homeCol">HOME</td>
+          <td id="scoreCol" style="text-align: center;"><img alt="{{teamData[5]}} logo" style="height: 30px" src="../../assets/teamLogos/{{game.home_team.id}}.svg">{{game.home_team.abbreviation + " " + game.home_team_score + " - " + game.visitor_team_score + " " + game.visitor_team.abbreviation}}<img alt="{{teamData[5]}} logo" style="height: 30px" src="../../assets/teamLogos/{{game.visitor_team.id}}.svg"></td>
+          <td id="awayCol"> AWAY</td>
+          <td id="timeCol"> {{!!(game.status == 'Final' || game.period != 4)  ? game.status : game.period + " |" + game.time}}</td>
         </tr>
       </table>
     </div>
