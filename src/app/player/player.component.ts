@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 import { PlayerpicService } from '../playerpic.service';
 import { HttpClient } from '@angular/common/http';
-import { gameStats, playerCurrentSeasonStats, playerGameStats, playerIDData, rawPlayerIDData, team } from '../interfaces';
+import { gameData, gameStats, playerCurrentSeasonStats, playerGameStats, playerIDData, rawPlayerIDData, team } from '../interfaces';
 import { Observable } from 'rxjs';
 import { pipe } from 'rxjs';
 
@@ -120,5 +120,19 @@ export class PlayerComponent implements OnInit {
     var playerTeam: team = this.playerData[6] as unknown as team;
     this.playerTeamID = playerTeam.id;
     console.log(playerTeam);
+  }
+
+  loadSeasonYear(){
+    var startDate = new Date();
+    var endDate = new Date();
+
+    startDate.setMonth(startDate.getMonth() - 5);
+
+    
+    var startdateString = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();
+    var enddateString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+    //this.http.get<todayData>("http://data.nba.net/prod/v3/today.json").subscribe( res => (this.data.changeSeason(res.seasonScheduleYear)));
+    this.http.get<gameData>("https://www.balldontlie.io/api/v1/games?team_ids[]=1&start_date=%27"+ startdateString + "&end_date=%27"+ enddateString +"%27&per_page=5").subscribe( res => (this.data.changeSeason(res.data[0].season)));
+    //console.log(this.currentSeason);
   }
 }

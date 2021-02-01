@@ -264,3 +264,36 @@ export interface gameStats{
     team : team,
 
 }
+
+export interface rawWidgetData{
+    uid	: string,
+    title : string,
+    deep_link : string,	
+    last_updated : string,
+    count : number,
+	items : widgetItem[]
+}
+
+export interface widgetItem{
+    uid	: string,
+    title : string,
+    deep_link : string,	
+    template: string,
+    last_updated : string,
+    count : number,
+	items : widgetItem2[]
+}
+
+export interface widgetItem2{
+    title: string,
+    deep_link: string,
+    name: string,
+    timestamp:string,
+    season: string,
+    seasontype: string,
+    gamedate:string,
+    permode:string,
+    leagueid: string,
+    urldate:string,
+	playergametats : string[]
+}

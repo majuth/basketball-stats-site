@@ -16,7 +16,7 @@ export class DataService{
     public playerID = new BehaviorSubject<number>(286);
     currentPlayer = this.playerID.asObservable();
 
-    public season = new BehaviorSubject<number>(2019);
+    public season = new BehaviorSubject<number>(2020);
     currentSeason = this.season.asObservable();
 
     public loading = new BehaviorSubject<boolean>(false);

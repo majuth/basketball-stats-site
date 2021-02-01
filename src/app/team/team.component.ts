@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
-import { game, gameData, nbaTeam, rawTeamAvgData, todayData } from '../interfaces';
+import { game, gameData, nbaTeam, rawTeamAvgData, rawWidgetData, todayData } from '../interfaces';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -68,12 +68,25 @@ export class TeamComponent implements OnInit {
   
 
   loadTeamStats(){
-    this.http.get<todayData>("http://data.nba.net/prod/v3/today.json").subscribe( res => (this.data.changeSeason(res.seasonScheduleYear)));
-    //console.log(this.currentSeason);
+    this.loadSeasonYear();
 
     //add interface to get team stats and store it
     this.http.get<rawTeamAvgData>("https://data.nba.net/data/10s/prod/v1/" +this.currentSeason +"/team_stats_rankings.json").subscribe( res => (this.teamAvg = res.league.standard.regularSeason.teams));
     //console.log(this.teamAvg);
+  }
+
+  loadSeasonYear(){
+    var startDate = new Date();
+    var endDate = new Date();
+
+    startDate.setMonth(startDate.getMonth() - 5);
+
+    
+    var startdateString = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();
+    var enddateString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+    //this.http.get<todayData>("http://data.nba.net/prod/v3/today.json").subscribe( res => (this.data.changeSeason(res.seasonScheduleYear)));
+    this.http.get<gameData>("https://www.balldontlie.io/api/v1/games?team_ids[]=" + this.teamID + "&start_date=%27"+ startdateString + "&end_date=%27"+ enddateString +"%27&per_page=5").subscribe( res => (this.data.changeSeason(res.data[0].season)));
+    //console.log(this.currentSeason);
   }
 
 }
