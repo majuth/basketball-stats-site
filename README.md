@@ -1,27 +1,28 @@
 # BasketballStatsSite
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+## Description
+Basketball Stats Site is a demo stats site that shows up to date NBA player and team statistics in an easy to use format. This website is not for profit and is simply a demo of my (Majuth Kirakalaprathapan) developer abilities.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## How it works
+1. Searching a Player or Team
+Use the auto completing search bar to help search for current players or teams on your mind.
 
-## Code scaffolding
+Or use the navbar tabs at the top to choose a team or popular player.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Resulting Data
+If the player is a current player you will be able to see their NBA picture and their associated data.
 
-## Build
+The data inculdes personal data aswell as current season stats and previous season stats if available (Note: Only past 2 season stats will be able de to API performance).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Utilizes
+Angular
+HTML
+Javascript
+CSS
+REST APIs
+Bootstrap
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Credits
+Code is written by Majuth Kirakalaprathapan, data is provided by Balldontlie API and NBA Stats. Images are property of the NBA and icons are property of their creators.
