@@ -76,17 +76,8 @@ export class TeamComponent implements OnInit {
   }
 
   loadSeasonYear(){
-    var startDate = new Date();
-    var endDate = new Date();
-
-    startDate.setMonth(startDate.getMonth() - 5);
-
-    
-    var startdateString = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();
-    var enddateString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
-    //this.http.get<todayData>("http://data.nba.net/prod/v3/today.json").subscribe( res => (this.data.changeSeason(res.seasonScheduleYear)));
-    this.http.get<gameData>("https://www.balldontlie.io/api/v1/games?team_ids[]=" + this.teamID + "&start_date=%27"+ startdateString + "&end_date=%27"+ enddateString +"%27&per_page=5").subscribe( res => (this.data.changeSeason(res.data[0].season)));
-    //console.log(this.currentSeason);
+    this.http.get<todayData>("http://data.nba.net/prod/v3/today.json").subscribe( res => (this.data.changeSeason(res.seasonScheduleYear)));
+     //console.log(this.currentSeason);
   }
 
 }
