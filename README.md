@@ -6,6 +6,7 @@ Basketball Stats Site is a demo stats site that shows up to date NBA player and 
 ## How to view the website
 
 The site can only be fully viewed by running it locally due to copyright concerns.
+However the lite version can be viewed live [here](https://majuthkira.github.io/basketball-stats-site-lite/index.html).
 NPM and GIT is required.
 
 1. Git clone this repository to your local machine
